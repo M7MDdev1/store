@@ -51,9 +51,6 @@ export default function RootLayout({
               <Link href="/cart" className="text-sm text-gray-700 hover:text-black">
                 Cart
               </Link>
-              <Link href="/about" className="text-sm text-gray-700 hover:text-black">
-                About
-              </Link>
             </nav>
           </div>
         </header>

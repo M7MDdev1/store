@@ -1,5 +1,5 @@
 import { Iproduct } from "@/app/interfaces/Iproduct";
-import React from "react";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "https://fakestoreapi.com";
 
 export default async function ProductDetails({
   params,
@@ -8,7 +8,6 @@ export default async function ProductDetails({
 }) {
   const { id } = await params;
 
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "https://fakestoreapi.com";
   const url = `${API_BASE}/products/${id}`;
   const response = await fetch(url, { cache: "no-store" });
   const product: Iproduct = await response.json();
@@ -58,9 +57,9 @@ export default async function ProductDetails({
   );
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "https://fakestoreapi.com";
-  const res = await fetch(`${API_BASE}/products/${params.id}`, { cache: "no-store" });
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const res = await fetch(`${API_BASE}/products/${id}`, { cache: "no-store" });
   const product: Iproduct = await res.json();
 
   return {
