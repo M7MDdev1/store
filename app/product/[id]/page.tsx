@@ -1,5 +1,6 @@
 import { Iproduct } from "@/app/interfaces/Iproduct";
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "https://fakestoreapi.com";
+import AddToCart from '@/app/components/AddToCart'
+const API_BASE = process.env.API_BASE ?? 'https://fakestoreapi.com'
 
 export default async function ProductDetails({
   params,
@@ -42,10 +43,7 @@ export default async function ProductDetails({
           <p className="text-gray-600 leading-relaxed">{product.description}</p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 mt-4">
-            <button className="w-full sm:w-auto bg-black text-white px-6 py-3 rounded-md hover:opacity-95 transition">
-              Add to Cart
-            </button>
-
+            <AddToCart product={product} />
           </div>
 
           <div className="text-sm text-gray-500 mt-4">

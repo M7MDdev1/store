@@ -1,7 +1,13 @@
-import React from 'react'
+"use client"
+import dynamic from 'next/dynamic'
 
-export default function cart() {
+const CartClient = dynamic(() => import('./CartClient'), { ssr: false })
+
+export default function CartPage() {
   return (
-    <div>cart</div>
+    <main>
+      <h1 className="text-2xl font-bold p-6">Shopping Cart</h1>
+      <CartClient />
+    </main>
   )
 }

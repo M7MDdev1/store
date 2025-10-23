@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default async function page() {
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "https://fakestoreapi.com";
+  const API_BASE = process.env.API_BASE;
   const response = await fetch(`${API_BASE}/products`, { cache: "no-store" });
   const products: Iproduct[] = await response.json();
 
